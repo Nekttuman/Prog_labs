@@ -1,0 +1,27 @@
+﻿  lab3.cpp
+E:\projects\Prog_labs\3\lab3\lab3\lab3.cpp(22,11): warning C4566: character represented by universal-character-name '\u041F' cannot be represented in the current code page (1252)
+E:\projects\Prog_labs\3\lab3\lab3\lab3.cpp(22,11): warning C4566: character represented by universal-character-name '\u0440' cannot be represented in the current code page (1252)
+E:\projects\Prog_labs\3\lab3\lab3\lab3.cpp(22,11): warning C4566: character represented by universal-character-name '\u0438' cannot be represented in the current code page (1252)
+E:\projects\Prog_labs\3\lab3\lab3\lab3.cpp(22,11): warning C4566: character represented by universal-character-name '\u0432' cannot be represented in the current code page (1252)
+E:\projects\Prog_labs\3\lab3\lab3\lab3.cpp(22,11): warning C4566: character represented by universal-character-name '\u0435' cannot be represented in the current code page (1252)
+E:\projects\Prog_labs\3\lab3\lab3\lab3.cpp(22,11): warning C4566: character represented by universal-character-name '\u0442' cannot be represented in the current code page (1252)
+E:\projects\Prog_labs\3\lab3\lab3\lab3.cpp(22,11): warning C4566: character represented by universal-character-name '\u0441' cannot be represented in the current code page (1252)
+E:\projects\Prog_labs\3\lab3\lab3\lab3.cpp(26,13): warning C4566: character represented by universal-character-name '\u0437' cannot be represented in the current code page (1252)
+E:\projects\Prog_labs\3\lab3\lab3\lab3.cpp(26,13): warning C4566: character represented by universal-character-name '\u043D' cannot be represented in the current code page (1252)
+E:\projects\Prog_labs\3\lab3\lab3\lab3.cpp(26,13): warning C4566: character represented by universal-character-name '\u0430' cannot be represented in the current code page (1252)
+E:\projects\Prog_labs\3\lab3\lab3\lab3.cpp(26,13): warning C4566: character represented by universal-character-name '\u0447' cannot be represented in the current code page (1252)
+E:\projects\Prog_labs\3\lab3\lab3\lab3.cpp(26,13): warning C4566: character represented by universal-character-name '\u0435' cannot be represented in the current code page (1252)
+E:\projects\Prog_labs\3\lab3\lab3\lab3.cpp(26,13): warning C4566: character represented by universal-character-name '\u0438' cannot be represented in the current code page (1252)
+E:\projects\Prog_labs\3\lab3\lab3\lab3.cpp(26,13): warning C4566: character represented by universal-character-name '\u044D' cannot be represented in the current code page (1252)
+E:\projects\Prog_labs\3\lab3\lab3\lab3.cpp(26,13): warning C4566: character represented by universal-character-name '\u043F' cannot be represented in the current code page (1252)
+E:\projects\Prog_labs\3\lab3\lab3\lab3.cpp(26,13): warning C4566: character represented by universal-character-name '\u0441' cannot be represented in the current code page (1252)
+E:\projects\Prog_labs\3\lab3\lab3\lab3.cpp(26,13): warning C4566: character represented by universal-character-name '\u043B' cannot be represented in the current code page (1252)
+E:\projects\Prog_labs\3\lab3\lab3\lab3.cpp(26,13): warning C4566: character represented by universal-character-name '\u043E' cannot be represented in the current code page (1252)
+E:\projects\Prog_labs\3\lab3\lab3\lab3.cpp(26,13): warning C4566: character represented by universal-character-name '\u0432' cannot be represented in the current code page (1252)
+E:\projects\Prog_labs\3\lab3\lab3\lab3.cpp(26,13): warning C4566: character represented by universal-character-name '\u0440' cannot be represented in the current code page (1252)
+E:\projects\Prog_labs\3\lab3\lab3\lab3.cpp(26,13): warning C4566: character represented by universal-character-name '\u0434' cannot be represented in the current code page (1252)
+E:\projects\Prog_labs\3\lab3\lab3\lab3.cpp(26,13): warning C4566: character represented by universal-character-name '\u0442' cannot be represented in the current code page (1252)
+E:\projects\Prog_labs\3\lab3\lab3\lab3.cpp(26,13): warning C4566: character represented by universal-character-name '\u043C' cannot be represented in the current code page (1252)
+E:\projects\Prog_labs\3\lab3\lab3\lab3.cpp(19,18): warning C4101: 'a': unreferenced local variable
+E:\projects\Prog_labs\3\lab3\lab3\lab3.cpp(19,21): warning C4101: 'S': unreferenced local variable
+  lab3.vcxproj -> E:\projects\Prog_labs\3\lab3\Debug\lab3.exe
