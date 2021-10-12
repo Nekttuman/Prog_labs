@@ -3,26 +3,34 @@ Group 1309
 Version: 1.1.1
 Start date : 10.8.2021
 End date : 
-Exercise: 
+Exercise: Determine the minimum value n > 0 for which 
+the next term does not exceed ?> 0 in absolute value when finding the result
+according to the formula : 
+  n
+  _     3ª
+  >  --------  xª
+  -  4ª (a+2)!
+ a=1
 
-input x: 2
-input epsilon (less than 10^30): 1e-10
-epsiln correct!
-      k      |      a      |      S      
-            1|         0.25|         0.25
-            2|      0.09375|      0.34375
-            3|     0.028125|     0.371875
-            4|   0.00703125|     0.378906
-            5|    0.0015067|     0.380413
-            6|  0.000282506|     0.380695
-            7|  4.70843e-05|     0.380743
-            8|  7.06264e-06|      0.38075
-            9|  9.63087e-07|     0.380751
-           10|  1.20386e-07|     0.380751
-           11|  1.38907e-08|     0.380751
-           12|  1.48829e-09|     0.380751
-           13|  1.48829e-10|     0.380751
-           14|  1.39527e-11|     0.380751
-1.39527e-11 <= 1e-10
-1.39527e-11 is the 14 member of the sequence.
-Answer is 14
+input x (use a dot as a separator between integer and fractional parts) : 2
+input epsilon (less than 10^30, also use dot, you can enter a number in exponential
+ notation like 1.1e-10): 3e-10
+epsilon correct!
+      k      |       a       |      S
+---------------------------------------------
+      1      |  2.500000e-01 | 2.500000e-01
+      2      |  9.375000e-02 | 3.437500e-01
+      3      |  2.812500e-02 | 3.718750e-01
+      4      |  7.031250e-03 | 3.789062e-01
+      5      |  1.506696e-03 | 3.804129e-01
+      6      |  2.825056e-04 | 3.806955e-01
+      7      |  4.708426e-05 | 3.807425e-01
+      8      |  7.062640e-06 | 3.807496e-01
+      9      |  9.630872e-07 | 3.807506e-01
+     10      |  1.203859e-07 | 3.807507e-01
+     11      |  1.389068e-08 | 3.807507e-01
+     12      |  1.488287e-09 | 3.807507e-01
+     13      |  1.488287e-10 | 3.807507e-01
+1.48829e-10 <= 3e-10
+1.48829e-10 is the 13 member of the sequence.
+Answer is 13
