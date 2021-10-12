@@ -72,14 +72,14 @@ int main()
   cin >> eps;
   f << eps;
 
-  while (fabs(eps) >= 1e30 && k < 2 && eps >= x) {
-    cout << "Epsilon is incorrect, please enter a number less than 10 ^ 30 and less than x\nepsilon: ";
-    f << "\nEpsilon is incorrect, please enter a number less than 10 ^ 30 and less than x\nepsilon: ";
+  while (fabs(eps) >= 1e30 && k < 2 && fabs(eps) >= fabs(x)) {
+    cout << "Epsilon is incorrect, please enter a number less than 10 ^ 30 and less than x in absolute value \nepsilon: ";
+    f << "\nEpsilon is incorrect, please enter a number less than 10 ^ 30 and less than x in absolute value \nepsilon: ";
     cin >> eps;
     k++;
     f << eps;
   }
-  if (eps < 1e30) {
+  if (fabs(eps) < 1e30) {
     cout << "epsilon correct!\n";
     f << "\nepsilon correct!\n";
     k = 1; a = 0.125*x; S = a;
