@@ -55,9 +55,9 @@ int main()
   p = 5.0001 * x * x - 3.0001;
   printf("p1 = %13.8lf\n", p);
   p = p * x - 9.0001;
-  printf("p2 = %20.20lf\n", p);
+  printf("p2 = %10.19lf\n", p);
   p *= x * x * x;
-  printf("answer1 = %30.30lf\n", p);
+  printf("answer1 = %10.20lf\n", p);
   v1 = p;
   printf("\n543,2 x^10 + 72,562 x^8 + 4365,32 x^7 + 1,2\n");
   p = 543.2 * x * x + 72.562;
