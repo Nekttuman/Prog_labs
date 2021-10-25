@@ -23,8 +23,6 @@ using namespace std;
 
 void beauty_print(double k, double a, double S, fstream& f);
 
-
-
 int main()
 {
   double eps, x, a, S;
@@ -102,7 +100,7 @@ int main()
       }
       else {
         cout << "a is out of range! Try other values.\n";
-        f << "a is out of range! Try other values.\n";
+        f << "a is out of range! Try other values.\n";  
   
         checkA = 0;
         break;
@@ -116,7 +114,6 @@ int main()
       f << a << " <= " << eps << endl << a << " is the " << k << " member of the sequence.\n"
         << "Answer is " << k;
     }
-
     
     f.close();
   }

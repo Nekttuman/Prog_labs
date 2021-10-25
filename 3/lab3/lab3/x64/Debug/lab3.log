@@ -1,1 +1,6 @@
-﻿  lab3.vcxproj -> D:\repos\Prog_labs\3\lab3\x64\Debug\lab3.exe
+﻿  lab3.cpp
+D:\repos\Prog_labs\3\lab3\lab3\lab3.cpp(39,8): warning C4566: character represented by universal-character-name '\u03B5' cannot be represented in the current code page (1252)
+D:\repos\Prog_labs\3\lab3\lab3\lab3.cpp(41,12): warning C4309: 'initializing': truncation of constant value
+D:\repos\Prog_labs\3\lab3\lab3\lab3.cpp(42,12): warning C4309: 'initializing': truncation of constant value
+D:\repos\Prog_labs\3\lab3\lab3\lab3.cpp(56,8): warning C4566: character represented by universal-character-name '\u03B5' cannot be represented in the current code page (1252)
+  lab3.vcxproj -> D:\repos\Prog_labs\3\lab3\x64\Debug\lab3.exe
