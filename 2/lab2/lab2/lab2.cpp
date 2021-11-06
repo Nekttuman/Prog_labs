@@ -106,7 +106,7 @@ int main(int argc, char* argv[])
       else if (x > 2 * b && x <= c) {
         cout << ((y >= 0 && y <= line1(x, a, b, c)) ? "Belongs (True)" : "Not belongs (False)");
       }
-      else if (x > c && x < 4 * b) {
+      else if (x > c && x <= 4 * b) {
         cout << ((y >= line2(x, a, b, c) && y <= 0) ? "Belongs (True)" : "Not belongs (False)");
       }
       else if (x > 4 * b && x <= 6 * b) {
@@ -135,7 +135,7 @@ int main(int argc, char* argv[])
       else if (x > c && x <= sqrt(3) * pow(b, 2) + 4 * b) {
         cout << ((y <= 0 && y >= circle2(x, a, b, c) && y <= line2(x, a, b, c)) ? "Belongs (True)" : "Not belongs (False)");
       }
-      else if (x >= sqrt(3) * pow(b, 2) + 4 * b && x < c + 4 * b) {
+      else if (x > sqrt(3) * pow(b, 2) + 4 * b && x < c + 4 * b) {
         cout << ((y >= 0 && y <= circle2(x, a, b, c) && y <= line3(x, a, b, c)) ? "Belongs (True)" : "Not belongs (False)");
       }
       else {
@@ -155,7 +155,7 @@ int main(int argc, char* argv[])
           cout << ((y >= circle2(x, a, b, c) && y <= line2(x, a, b, c)) ? "Belongs (True)" : "Not belongs (False)");
         }
       }
-      else if (x >= sqrt(3) * pow(b, 2) + 4 * b && x < c + 4 * b) {
+      else if (x >= sqrt(3) * pow(b, 2) + 4 * b && x <= c + 4 * b) {
         cout << ((y >= 0 && y <= circle2(x, a, b, c) && y <= line3(x, a, b, c)) ? "Belongs (True)" : "Not belongs (False)");
       }
       else {
