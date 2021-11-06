@@ -1,0 +1,3 @@
+﻿  lab_5.cpp
+E:\projects\Prog_labs\5\lab_5\lab_5\lab_5.cpp(61,32): warning C4305: 'initializing': truncation from '__int64' to 'double'
+  lab_5.vcxproj -> E:\projects\Prog_labs\5\lab_5\x64\Debug\lab_5.exe
