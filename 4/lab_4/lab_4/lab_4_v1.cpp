@@ -17,7 +17,7 @@ S = ___ + _________ + ... + ___________________
 
 using namespace std;
 
-int main()
+int main1()
 {
 	fstream f_in("../test_in.txt"), //"../test_in.txt"
 		f_out("../output.txt"),

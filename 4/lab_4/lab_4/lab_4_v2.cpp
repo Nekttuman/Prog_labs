@@ -18,11 +18,11 @@ S = ___ + _________ + ... + ___________________
 
 using namespace std;
 
-int main1()
+int main2()
 {
 	fstream f_in("../test_in.txt"), //"../test_in.txt"
-		f_out("../output.txt"),
-		log("../log.txt");
+		f_out("../output.txt", fstream::trunc | fstream::out),
+		log("../log.txt", fstream::trunc | fstream::out);
 	double a, S = 0, s = 0;
 	long long n;
 
@@ -38,7 +38,7 @@ int main1()
 		<< "S = ___ + _________ + ... + ___________________\n"
 		<< "     __    __    __          __    __        __\n"
 		<< "    Va1   Va1 + Va2         Va1 + Va2 + ... Van\n" << endl;
-	f_out << "\n\nAuthor: Ishchenko D.O.\n"
+	f_out << "Author: Ishchenko D.O.\n"
 		<< "Group 1309\n"
 		<< "Version: 4.1.1\n"
 		<< "Start date : 1.11.2021\n"
@@ -87,7 +87,7 @@ int main1()
 			log << "negative value a = " << a << " on " << i + 1 << " line converted to positive" << endl;
 			a = -a;
 		}
-		A[i] = a;
+		*(A+i) = a;
 		f_out << a << " ";
 	}
 	log << n << " numbers read " << endl;
@@ -97,7 +97,7 @@ int main1()
 
 	// calculate S
 	for (int i = 0; i < n; i++) {
-		s += sqrt(A[i]);
+		s += sqrt(*(A + i));
 		S += (1 / s);
 	}
 
