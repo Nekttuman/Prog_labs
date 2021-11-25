@@ -1,0 +1,15 @@
+Author: Ishchenko D.O.
+Group 1309
+Version: 4.1.1
+Start date : 1.11.2021
+End date : 
+Exercise: You are given a sequence of positive numbers a1, a2, . . . , an.
+Calculate:
+     1        1                      1
+S = ___ + _________ + ... + ___________________
+     __    __    __          __    __        __
+    Va1   Va1 + Va2         Va1 + Va2 + ... Van
+program version: 1
+actual number of elements: 5
+1.4 1.1 45.272 675 0.312796 
+S = 1.46157

@@ -5,7 +5,7 @@
 
 using namespace std;
 
-int v2(fstream& f_in, fstream& f_out, fstream& log)
+void v2(fstream& f_in, fstream& f_out, fstream& log)
 {
 	double a, S = 0, s = 0;
 	long long n;
@@ -37,7 +37,7 @@ int v2(fstream& f_in, fstream& f_out, fstream& log)
 			log << "negative value a = " << a << " on " << i + 1 << " line converted to positive" << endl;
 			a = -a;
 		}
-		*(A+i) = a;
+		*(A + i) = a;
 		f_out << a << " ";
 	}
 	log << n << " numbers read " << endl;
@@ -56,6 +56,4 @@ int v2(fstream& f_in, fstream& f_out, fstream& log)
 	log << "S value written to file " << endl;
 
 	delete[] A;
-
-	return 0;
 }

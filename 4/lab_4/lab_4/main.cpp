@@ -17,18 +17,19 @@ S = ___ + _________ + ... + ___________________
 
 using namespace std;
 
-int v1(fstream& f_in, fstream& f_out, fstream& log);
-int v2(fstream& f_in, fstream& f_out, fstream& log);
+void v1(fstream& f_in, fstream& f_out, fstream& log);
+void v2(fstream& f_in, fstream& f_out, fstream& log);
 void print_head(fstream& f_out, int version=0);
 
 int main() {
 	string input_path = "../test_in.txt",
-		output_path = "../output.txt",
+		output_path_v1 = "../output_v1.txt",
+		output_path_v2 = "../output_v2.txt",
 		log_path = "../log.txt";
 
 
 	fstream f_in(input_path), 
-		f_out(output_path, fstream::trunc | fstream::out),
+		f_out(output_path_v1, fstream::trunc | fstream::out),
 		log(log_path, fstream::trunc | fstream::out);
 
 	if (!log.is_open()) {
@@ -55,16 +56,16 @@ int main() {
 	if (ans) {
 		print_head(f_out, 1);
 		v1(f_in, f_out, log);
-
-		log.close(); f_in.close(); f_out.close();
-		f_in.open(input_path);
-		f_out.open(output_path, fstream::trunc | fstream::out);
-		log.open(log_path, fstream::trunc | fstream::out);
 	}
 
 	cout << "\nStart second version? (1/0) : ";
 	cin >> ans;
 	if (ans) {
+		log.close(); f_in.close(); f_out.close();
+		f_in.open(input_path);
+		f_out.open(output_path_v2, fstream::trunc | fstream::out);
+		log.open(log_path, fstream::trunc | fstream::out);
+
 		print_head(f_out, 2);
 
 		v2(f_in, f_out, log);
