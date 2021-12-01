@@ -22,7 +22,7 @@ void v2(fstream& f_in, fstream& f_out, fstream& log);
 void print_head(fstream& f_out, int version=0);
 
 int main() {
-	string input_path = "../test_in.txt",
+	string input_path = "../input.txt",
 		output_path_v1 = "../output_v1.txt",
 		output_path_v2 = "../output_v2.txt",
 		log_path = "../log.txt";
