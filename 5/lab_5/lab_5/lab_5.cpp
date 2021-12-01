@@ -11,7 +11,7 @@ int check_N(fstream& f_in, int prev_n);
 void read_a(double** Arr, fstream& f_in, int N);
 void print_arr(double** Arr, int N, fstream& f_out);
 double find_max(double** Arr, int N, int col, int row);
-
+void clear_data(double** Arr, fstream& f_in, fstream& f_out, int N);
 
 int main()
 {
@@ -28,13 +28,40 @@ int main()
   }
   int N, col, row;
   f_in >> N >> col >> row;
+  if (col > N) {
+    cout << "column value more than N";
+    f_in.close();
+    f_out.close();
+    return -1;
+  }
+  else if (row > N) {
+    cout << "row value more than N";
+    f_in.close();
+    f_out.close();
+    return -1;
+  }
   col -= 1; row -= 1;
   f_in.seekg(2, ios::cur);
 
   N = check_N(f_in, N);
+  if (col+1 > N) {
+    cout << "New N value = "<<N<<". column value now more than N";
+    f_in.close();
+    f_out.close();
+    return -1;
+  }
+  else if (row+1 > N) {
+    cout << "New N value = " << N << ". row value now more than N";
+    f_in.close();
+    f_out.close();
+    return -1;
+  }
+
   if (N == 0) {
     cout << "N is null";
     f_out << "N is null";
+    f_in.close();
+    f_out.close();
     return 0;
   }
 
@@ -53,6 +80,8 @@ int main()
   double mx = find_max(Arr, N, col, row);
   cout << mx;
   f_out << "max item = " << mx;
+
+  clear_data(Arr, f_in, f_out, N);
 }
 
 double find_max(double** Arr, int N, int col, int row) {
@@ -72,15 +101,15 @@ double find_max(double** Arr, int N, int col, int row) {
 
 int check_N(fstream& f_in, int prev_n) {
   //  курсор в файле должн находится непосредственно в начале первой строки таблицы
+  // строки таблицы не могут оканчиваться пробелом
   if (prev_n < 0)
     return 0;
-  int len = 1;
   int min_len = 30000;
   int strings_count = 0;
   string l;
   while (getline(f_in, l)) {
+    int len = 1;
     strings_count++;
-    //   cout << l<<endl;
     for (int i = 0; i < l.size(); i++) {
       if (l[i] == ' ')
         len++;
@@ -88,8 +117,8 @@ int check_N(fstream& f_in, int prev_n) {
     if (len < min_len)
       min_len = len;
   }
-
-  return min(min(min_len, strings_count), prev_n);
+  int mn = min(min(min_len, strings_count), prev_n);
+  return mn;
 }
 
 void read_a(double** Arr, fstream& f_in, int N) {
@@ -123,4 +152,13 @@ void print_arr(double** Arr, int N, fstream& f_out) {
     f_out << endl;
     cout << endl;
   }
+}
+
+void clear_data(double** Arr, fstream& f_in, fstream& f_out, int N) {
+  f_out.close();
+  f_in.close();
+  for (int i = 0; i < N; i++) {
+    delete Arr[i];
+  }
+  delete[] Arr;
 }
