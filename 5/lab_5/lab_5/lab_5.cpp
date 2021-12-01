@@ -4,6 +4,7 @@
 #include <cmath>
 #include <stdio.h>
 #include <iomanip>
+#include <limits>
 
 using namespace std;
 
@@ -11,7 +12,7 @@ int check_N(fstream& f_in, int prev_n);
 void read_a(double** Arr, fstream& f_in, int N);
 void print_arr(double** Arr, int N, fstream& f_out);
 double find_max(double** Arr, int N, int col, int row);
-void clear_data(double** Arr, fstream& f_in, fstream& f_out, int N);
+void clear_data(fstream& f_in, fstream& f_out = numeric_limits<fstream&>::quiet_NaN(), int N = numeric_limits<int>::quiet_NaN(), double** Arr = numeric_limits<double**>::quiet_NaN());
 
 int main()
 {
@@ -30,14 +31,12 @@ int main()
   f_in >> N >> col >> row;
   if (col > N) {
     cout << "column value more than N";
-    f_in.close();
-    f_out.close();
+    clear_data(f_in, f_out);
     return -1;
   }
   else if (row > N) {
     cout << "row value more than N";
-    f_in.close();
-    f_out.close();
+    clear_data(f_in, f_out);
     return -1;
   }
   col -= 1; row -= 1;
@@ -46,22 +45,19 @@ int main()
   N = check_N(f_in, N);
   if (col+1 > N) {
     cout << "New N value = "<<N<<". column value now more than N";
-    f_in.close();
-    f_out.close();
+    clear_data(f_in, f_out);
     return -1;
   }
   else if (row+1 > N) {
     cout << "New N value = " << N << ". row value now more than N";
-    f_in.close();
-    f_out.close();
+    clear_data(f_in, f_out);
     return -1;
   }
 
   if (N == 0) {
     cout << "N is null";
     f_out << "N is null";
-    f_in.close();
-    f_out.close();
+    clear_data(f_in, f_out);
     return 0;
   }
 
@@ -81,7 +77,7 @@ int main()
   cout << mx;
   f_out << "max item = " << mx;
 
-  clear_data(Arr, f_in, f_out, N);
+  clear_data(f_in, f_out, N, Arr);
 }
 
 double find_max(double** Arr, int N, int col, int row) {
@@ -154,11 +150,15 @@ void print_arr(double** Arr, int N, fstream& f_out) {
   }
 }
 
-void clear_data(double** Arr, fstream& f_in, fstream& f_out, int N) {
-  f_out.close();
+void clear_data(fstream& f_in, fstream& f_out, int N, double** Arr) {
   f_in.close();
-  for (int i = 0; i < N; i++) {
-    delete Arr[i];
+  if (f_out) {
+    f_out.close();
   }
-  delete[] Arr;
+  if (Arr) {
+    for (int i = 0; i < N; i++) {
+      delete Arr[i];
+    }
+    delete[] Arr;
+  }
 }
