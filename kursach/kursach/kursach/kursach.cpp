@@ -16,6 +16,7 @@ struct fig {
   coord five;
   coord center;
   coord sub_center;
+  int inner_points_count = 5;
 };
 
 bool check_line(std::string l) {
@@ -67,6 +68,16 @@ int get_n(std::fstream& in, std::fstream& log) {
   return n;
 }
 
+bool is_in(coord point, coord* points, const int n) {
+  for (int i = 0; i < n; i++) {
+    if (point.x == points[i].x && point.y == points[i].y) {
+      return true;
+    }
+  }
+
+  return false;
+}
+
 void read_points(std::fstream& in, coord* points, int &n, std::fstream &log) {
   int p = 0;
   std::string line;
@@ -81,10 +92,18 @@ void read_points(std::fstream& in, coord* points, int &n, std::fstream &log) {
           break;
         }
       }
-      points[p].x = stod(line.substr(0, space_ptr));
-      points[p].y = stod(line.substr(space_ptr, line.size()));
-      log << points[p].x << " " << points[p].y << '\n';
-      p++;
+      coord tmp{ stod(line.substr(0, space_ptr)) ,stod(line.substr(space_ptr, line.size())) };
+      if (!is_in(tmp, points, n)) {
+        points[p].x = tmp.x;
+        points[p].y = tmp.y;
+
+        log << points[p].x << " " << points[p].y << '\n';
+        p++;
+      }
+      else {
+        log << "found doubles " << std::to_string(tmp.x) << " : " << std::to_string(tmp.y)<<'\n';
+        n--;
+      }
     }
   }
 }
@@ -122,24 +141,66 @@ void draw_figure(const fig& cur_figure) {
   system(command.c_str());
 }
 
+void print_fig_coords(fig figure) {
+  std::cout << "1: " << figure.first.x << " : " << figure.first.y << "\n" <<
+    "2: " << figure.second.x << " : " << figure.second.y << "\n" <<
+    "3: " << figure.third.x << " : " << figure.third.y << "\n" <<
+    "4: " << figure.four.x << " : " << figure.four.y << "\n" <<
+    "5: " << figure.five.x << " : " << figure.five.y << "\n" <<
+    "sub_c: " << figure.sub_center.x << " : " << figure.sub_center.y << "\n\n";
+}
 
-double find_inner_points(const coord* points, const fig & figure, int n, coord* inner_points) {
+void log_fig_coords(fig figure, std::fstream& log) {
+  log<< "figure 1 has "<<figure.inner_points_count<< " inner points\n" << "1: " << figure.first.x << " : " << figure.first.y << "\n" <<
+    "2: " << figure.second.x << " : " << figure.second.y << "\n" <<
+    "3: " << figure.third.x << " : " << figure.third.y << "\n" <<
+    "4: " << figure.four.x << " : " << figure.four.y << "\n" <<
+    "5: " << figure.five.x << " : " << figure.five.y << "\n" <<
+    "sub_c: " << figure.sub_center.x << " : " << figure.sub_center.y << "\n\n";
+}
+
+
+unsigned find_inner_points(const coord* points, const fig & figure, int n, bool *is_inner) {
+  //print_fig_coords(figure);
   unsigned count = 0;
   for (int i = 0; i < n; i++) {
     // проверка приинадлежности кругу
     double r = abs(distance(figure.first, figure.second));
     if (sqrt(pow(points[i].x - figure.second.x, 2) + pow(points[i].y - figure.second.y, 2)) <= r) {
       count++;
+      is_inner[i] = true;
     }
     else if (sqrt(pow(points[i].x - figure.sub_center.x, 2) + pow(points[i].y - figure.sub_center.y, 2)) <= r) {
       count++;
+      is_inner[i] = true;
     }
-    else if ()
+    else {
+      double a = distance(figure.first, figure.third),
+        b = distance(figure.first, figure.five);
+      double S = a * b;
+      double d1 = distance(points[i], figure.first),
+        d2 = distance(points[i], figure.third),
+        d3 = distance(points[i], figure.four),
+        d4 = distance(points[i], figure.five);
+      double p1 = (d1 + a + d2) / 2,
+        p2 = (d2 + b + d3) / 2,
+        p3 = (d3 + a + d4) / 2,
+        p4 = (d4 + d1 + b) / 2;
+      double s1 = sqrt(p1 * (p1 - a) * (p1 - d1) * (p1 - d2)),
+        s2 = sqrt(p2 * (p2 - b) * (p2 - d3) * (p2 - d2)),
+        s3 = sqrt(p3 * (p3 - a) * (p3 - d4) * (p3 - d3)),
+        s4 = sqrt(p4 * (p4 - b) * (p4 - d1) * (p4 - d4));
+      if (s1 + s2 + s3 + s4 == S) {
+        count++;
+        is_inner[i] = true;
+      }
+    }
   }
   return count;
 }
 
-void find_max(int n, coord* points) {
+fig find_max(int n, coord* points, std::fstream& log, bool*is_inner_mask,bool visualizate=false) {
+  fig best_figure{ 0,0,0,0,0,0,0 };
   for (int first = 0; first < n - 2; first++) {
     for (int second = first + 1; second < n - 1; second++) {
       if (is_equval(points[first], points[second]))
@@ -188,14 +249,27 @@ void find_max(int n, coord* points) {
             }
             cur_figure.center.x = (cur_figure.first.x + four_point.x) / 2;
             cur_figure.center.y = (cur_figure.first.y + four_point.y) / 2;
-            cur_figure.sub_center.x = (cur_figure.four.x + cur_figure.five.x) / 2;
-            cur_figure.sub_center.y = (cur_figure.four.y + cur_figure.five.y) / 2;
+            cur_figure.sub_center.x = (four_point.x + five_point.x) / 2;
+            cur_figure.sub_center.y = (four_point.y + five_point.y) / 2;
             if (distance(cur_figure.center, cur_figure.first) == distance(cur_figure.center, cur_figure.third)) {
               cur_figure.four = four_point;
               cur_figure.five = five_point;
-              draw_figure(cur_figure);
-              coord* inner_points;
-              double inner_points = find_inner_points(points, cur_figure, n, inner_points);
+              bool* is_inner = new bool[n];
+              for (int i = 0; i < n; i++) {
+                is_inner[i] = false;
+              }
+              cur_figure.inner_points_count = find_inner_points(points, cur_figure, n, is_inner);
+              log_fig_coords(cur_figure, log);
+              if (visualizate)
+                draw_figure(cur_figure);
+              if (cur_figure.inner_points_count > best_figure.inner_points_count) {
+                for (int i = 0; i < n; i++) {
+                  is_inner_mask[i] = is_inner[i];
+                }
+                best_figure = cur_figure;
+              }
+              delete[] is_inner;
+              is_inner = nullptr;
             }
 
             cur_figure = save_fig;
@@ -204,7 +278,10 @@ void find_max(int n, coord* points) {
       }
     }
   }
+  return best_figure;
 }
+
+
 
 int main()
 {
@@ -214,13 +291,43 @@ int main()
   int n = get_n(in,log);
   log << "number of matching strings = " << n << '\n';
 
+  bool VISUALIZATE = false;
 
 
   coord* points = new coord[n];
   read_points(in, points, n, log);
   log << "n = " << n << '\n';
 
-  find_max(n, points);
+  bool *is_inner = new bool[n];
+  for (int i = 0; i < n; i++)
+    is_inner[i] = false;
+  fig best_figure = find_max(n, points, log, is_inner, VISUALIZATE);
+
+  out << "best figure is:\n" << "1: " << best_figure.first.x << " : " << best_figure.first.y << "\n" <<
+    "2: " << best_figure.second.x << " : " << best_figure.second.y << "\n" <<
+    "3: " << best_figure.third.x << " : " << best_figure.third.y << "\n" <<
+    "4: " << best_figure.four.x << " : " << best_figure.four.y << "\n" <<
+    "5: " << best_figure.five.x << " : " << best_figure.five.y << "\n" <<
+    "sub_c: " << best_figure.sub_center.x << " : " << best_figure.sub_center.y << "\n"
+    << "it has " << best_figure.inner_points_count << " inner points:\n";
+
+  for (int i = 0; i < n; i++) {
+    if (is_inner[i]) {
+      out << points[i].x << " : " << points[i].y << "\n";
+    }
+  }
+
+
+  in.close();
+  out.close();
+  log.close();
+
+  draw_figure(best_figure);
+
+  delete[] points;
+  points = nullptr;
+  delete[] is_inner;
+  is_inner = nullptr;
 
 }
 

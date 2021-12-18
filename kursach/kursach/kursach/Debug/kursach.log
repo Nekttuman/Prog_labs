@@ -1,4 +1,4 @@
 ﻿  kursach.cpp
-D:\repos\Prog_labs\kursach\kursach\kursach\kursach.cpp(24,23): warning C4018: '<': signed/unsigned mismatch
-D:\repos\Prog_labs\kursach\kursach\kursach\kursach.cpp(78,25): warning C4018: '<': signed/unsigned mismatch
-  kursach.vcxproj -> D:\repos\Prog_labs\kursach\kursach\Debug\kursach.exe
+E:\projects\Prog_labs\kursach\kursach\kursach\kursach.cpp(24,23): warning C4018: '<': signed/unsigned mismatch
+E:\projects\Prog_labs\kursach\kursach\kursach\kursach.cpp(78,25): warning C4018: '<': signed/unsigned mismatch
+  kursach.vcxproj -> E:\projects\Prog_labs\kursach\kursach\Debug\kursach.exe
