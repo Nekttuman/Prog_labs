@@ -21,7 +21,7 @@ struct fig {
 
 bool check_line(std::string l) {
   bool has_first_n = false, has_one_whitespace = false, has_second_digit = false,
-    has_smth_else = false;
+    has_smth_else = false; // убрать проверку на это 
   for (int ch = 0; ch < l.size(); ch++) {
     if ((isdigit(l[ch]) || l[ch] == '-' || l[ch] == '.') && !has_first_n) {
       has_first_n = true;
@@ -92,6 +92,7 @@ void read_points(std::fstream& in, coord* points, int &n, std::fstream &log) {
           break;
         }
       }
+      // добавить пропуск лишних символов до конца строки (ввести ещё один указатель на след пробел или пропуск)
       coord tmp{ stod(line.substr(0, space_ptr)) ,stod(line.substr(space_ptr, line.size())) };
       if (!is_in(tmp, points, n)) {
         points[p].x = tmp.x;
