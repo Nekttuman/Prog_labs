@@ -1,17 +1,18 @@
-format error in input file in 6 line
-format error in input file in 12 line
-format error in input file in 19 line
-format error in input file in 25 line
+format error in input file in 7 line
+format error in input file in 13 line
+format error in input file in 20 line
 format error in input file in 26 line
 format error in input file in 27 line
 format error in input file in 28 line
-number of matching strings = 21
-readen points: 
+format error in input file in 29 line
+number of matching strings = 22
+read points: 
 6 8
 -4 -5
 -4 0
 5 5
 0.5 5
+5 -15
 5 -5
 9 1
 12 3
@@ -28,8 +29,8 @@ readen points:
 found doubles 5.000000 : -5.000000
 4 4
 9 -1
-n = 20
-figure 1 has 15 inner points
+n = 21
+figure has 15 inner points
 1: -4 : -5
 2: -4 : 0
 3: -4 : 5
@@ -37,7 +38,7 @@ figure 1 has 15 inner points
 5: 5 : -5
 sub_c: 5 : 0
 
-figure 1 has 13 inner points
+figure has 13 inner points
 1: 5 : 5
 2: 0.5 : 5
 3: -4 : 5
@@ -45,7 +46,7 @@ figure 1 has 13 inner points
 5: 5 : -5
 sub_c: 0.5 : -5
 
-figure 1 has 8 inner points
+figure has 8 inner points
 1: 0 : 0
 2: 2 : 2
 3: 4 : 4

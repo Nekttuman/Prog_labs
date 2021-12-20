@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 import numpy as np
 
-f = open('E:/projects/Prog_labs/kursach/input.txt')
+f = open('E:/projects/Prog_labs/kursach/beauty_points.txt')
 xs = []
 ys = []
 x, y = [float(i) for i in f.readline().split()]
