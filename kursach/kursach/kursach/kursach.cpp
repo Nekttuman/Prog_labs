@@ -119,17 +119,17 @@ void read_points(std::fstream& in, coord* points, int &n, std::fstream &log) {
   }
 }
 
-double distance(coord a, coord b) {
+double distance(const coord a, const coord b) {
   double d = sqrt(pow(a.x - b.x, 2) + pow(a.y - b.y, 2));
   return d;
 }
 
-bool is_equval(const coord& a, const coord& b) {
+bool is_equal(const coord& a, const coord& b) {
   return (a.x == b.x && a.y == b.y);
 }
 
-bool is_equval(const fig& figure, const coord& p) {
-  return (is_equval(figure.first, p) || is_equval(figure.second, p) || is_equval(figure.third, p));
+bool is_equal(const fig& figure, const coord& p) {
+  return (is_equal(figure.first, p) || is_equal(figure.second, p) || is_equal(figure.third, p));
 }
 
 bool is_collinear(const coord& a, const coord& b, const coord& c) {
@@ -211,11 +211,11 @@ fig find_max(int n, coord* points, std::fstream& log, bool*is_inner_mask,bool vi
   fig best_figure;
   for (int first = 0; first < n - 2; first++) {
     for (int second = first + 1; second < n - 1; second++) {
-      if (is_equval(points[first], points[second]))
+      if (is_equal(points[first], points[second]))
         continue;
       double ab = distance(points[first], points[second]);
       for (int third = second + 1; third < n; third++) {
-        if (is_equval(points[first], points[third]) || is_equval(points[second], points[third]))
+        if (is_equal(points[first], points[third]) || is_equal(points[second], points[third]))
           continue;
         double bc = distance(points[second], points[third]);
         fig cur_figure;
@@ -242,7 +242,7 @@ fig find_max(int n, coord* points, std::fstream& log, bool*is_inner_mask,bool vi
 
         for (int four = 0; four < n - 1; four++) {
           for (int five = four + 1; five < n; five++) {
-            if (is_equval(cur_figure, points[four]) || is_equval(cur_figure, points[five]))
+            if (is_equal(cur_figure, points[four]) || is_equal(cur_figure, points[five]))
               continue;
             if (distance(cur_figure.first, cur_figure.third) != distance(points[four], points[five]) || 
               distance(cur_figure.first, points[five]) != distance(points[four], cur_figure.third))
@@ -316,7 +316,7 @@ int main()
   int n = get_n(in,log);
   log << "number of matching strings = " << n << '\n';
 
-  bool VISUALIZATE = false;
+  bool VISUALIZATE = true;
 
   coord* points = new coord[n];
   read_points(in, points, n, log);
