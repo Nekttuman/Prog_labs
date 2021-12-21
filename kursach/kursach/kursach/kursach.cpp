@@ -13,10 +13,10 @@ struct fig {
   coord first = { 0,0 };
   coord second = { 0,0 };
   coord third = { 0,0 };
-  coord four = { 0,0 };
-  coord five = { 0,0 };
-  coord center = { 0,0 };
-  coord sub_center = { 0,0 };
+  coord four;
+  coord five;
+  coord center;
+  coord sub_center;
   int inner_points_count = 5;
 };
 
@@ -318,7 +318,6 @@ int main()
 
   bool VISUALIZATE = false;
 
-
   coord* points = new coord[n];
   read_points(in, points, n, log);
   fig best_figure;
@@ -352,11 +351,9 @@ int main()
     }
   }
 
-
   in.close();
   out.close();
   log.close();
-
 
   delete[] points;
   points = nullptr;
