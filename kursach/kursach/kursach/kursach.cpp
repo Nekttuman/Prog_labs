@@ -73,7 +73,6 @@ bool is_in(coord point, coord* points, const int n) {
       return true;
     }
   }
-
   return false;
 }
 
@@ -169,10 +168,8 @@ void log_fig_coords(fig figure, std::fstream& log) {
 }
 
 unsigned find_inner_points(const coord* points, const fig & figure, int n, bool *is_inner) {
-  //print_fig_coords(figure);
   unsigned count = 0;
   for (int i = 0; i < n; i++) {
-    // проверка приинадлежности кругу
     double r = abs(distance(figure.first, figure.second));
     if (sqrt(pow(points[i].x - figure.second.x, 2) + pow(points[i].y - figure.second.y, 2)) <= r) {
       count++;
@@ -299,12 +296,7 @@ void out_result(const fig& figure, std::fstream &out, coord*points, int n) {
   for (int i = 0; i < n; i++) {
     out << points[i].x << " : " << points[i].y << '\n';
   }
-  out << "best figure has " << figure.inner_points_count << " inner points\n" << "1: " << figure.first.x << " : " << figure.first.y << "\n" <<
-    "2: " << figure.second.x << " : " << figure.second.y << "\n" <<
-    "3: " << figure.third.x << " : " << figure.third.y << "\n" <<
-    "4: " << figure.four.x << " : " << figure.four.y << "\n" <<
-    "5: " << figure.five.x << " : " << figure.five.y << "\n" <<
-    "sub_c: " << figure.sub_center.x << " : " << figure.sub_center.y << "\n\n";
+  log_fig_coords(figure, out);
 }
 
 int main()
@@ -316,7 +308,7 @@ int main()
   int n = get_n(in,log);
   log << "number of matching strings = " << n << '\n';
 
-  bool VISUALIZATE = true;
+  bool VISUALIZATE = false;
 
   coord* points = new coord[n];
   read_points(in, points, n, log);
