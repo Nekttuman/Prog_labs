@@ -8,7 +8,7 @@ def get_distance(one, two):
     return ((one[0] - two[0]) ** 2 + (one[1] - two[1]) ** 2) ** 0.5
 
 
-f = open('E:/projects/Prog_labs/kursach/input.txt')
+f = open('D:/repos/Prog_labs/kursach/input.txt')
 xs = []
 ys = []
 x, y = [float(i) for i in f.readline().split()]
@@ -24,6 +24,8 @@ while True:
     ys.append(y)
 
 plt.grid(True)
+plt.xticks(np.arange(min(xs)-2,max(xs)+2,2))
+plt.yticks(np.arange(min(ys)-2,max(ys)+2,2))
 plt.plot(xs, ys, 'yo')
 
 xs = []
@@ -50,6 +52,7 @@ c2 = [(xs[3] + xs[4]) / 2, (ys[3] + ys[4]) / 2]
 y = [r * sin(i) + c2[1] for i in t]
 x = [r * cos(i) + c2[0] for i in t]
 plt.plot(x, y, 'b')
+
 
 plt.gca().set_aspect('equal', adjustable='box')
 plt.show()
