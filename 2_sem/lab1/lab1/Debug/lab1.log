@@ -1,3 +1,3 @@
 ﻿  main.cpp
-D:\repos\Prog_labs\2_sem\lab1\lab1\main.cpp(123,14): warning C4018: '>=': signed/unsigned mismatch
+D:\repos\Prog_labs\2_sem\lab1\lab1\main.cpp(28,14): warning C4018: '>=': signed/unsigned mismatch
   lab1.vcxproj -> D:\repos\Prog_labs\2_sem\lab1\Debug\lab1.exe
