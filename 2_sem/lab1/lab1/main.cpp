@@ -108,7 +108,6 @@ bool is_correct(std::string tmp) {
 	return true;
 }
 
-
 void process_data(std::fstream &in, std::fstream &out) {
 	// считывает построчно данные отправляет на проверку в is_correct()
 	// если это так, то вызывает метод find_repeat_char и результат отправляет в 
@@ -170,7 +169,9 @@ void process_data(std::fstream &in, std::fstream &out) {
 				while (tmp[i] == ' ') {
 					i++;
 				}
-
+				if (len < 0) {
+					len = -len;
+				}
 				int j = i;
 				for (; (j-i <len) && (tmp[j] != '\0') && j < N + i; j++) {
 					c[j - i] = tmp[j];
@@ -200,7 +201,5 @@ int main() {
 		std::cout << "files not open";
 	}
 	
-	in.close();
+	in.close(); out.close();
 }
-
-

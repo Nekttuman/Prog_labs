@@ -2,8 +2,5 @@ bb
 
 &*b as*
 &*b0 bbb
-
-&*a32 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa*a
    &*a3 aaa*a
 &*a3  bbb*a
-
