@@ -1,0 +1,4 @@
+aaaa contains a 4 times.
+bbbbbbbbbbb not contains a 4 times.
+ not contains a 13 times.
+asd contains a 1 times.

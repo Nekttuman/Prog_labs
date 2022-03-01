@@ -1,0 +1,6 @@
+*b3 bbbbbbb*bb
+*b3 aaaaaaaaaaaaaaaaaaaaaaaaa*
+   
+*b4 aa
+*b aa
+*d
