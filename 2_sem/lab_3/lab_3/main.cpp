@@ -1,9 +1,6 @@
-﻿/* lab 3
-
-
-*/
-#include <iostream>
+﻿#include <iostream>
 #include "Text.h"
+#include "Globals.h"
 
 
 void process(Text& txt) {
@@ -20,14 +17,22 @@ void process(Text& txt) {
 			if (word == duplicates[j]) {
 				char one, two, three, four;
 				unsigned num = d_numbers[j];
-				one = (char)(num / 1000)+48;
+				one = (char)(num / 1000) + 48;
 				num %= 1000;
 				two = (char)(num / 100) + 48;
 				num %= 100;
 				three = (char)(num / 10) + 48;
 				num %= 10;
 				four = (char)(num + 48);
-				new_w = StrL(word.get_char(1), '(', one, two,three,four, ')','\0');
+				if (one != '0')
+					new_w = StrL(word.get_char(0), '(', one, two,three,four, ')','\0');
+				else if (two!='0')
+					new_w = StrL(word.get_char(0), '(', two, three, four, ')', '\0');
+				else if (three != '0')
+					new_w = StrL(word.get_char(0), '(', three, four, ')', '\0');
+				else
+					new_w = StrL(word.get_char(0), '(', four, ')', '\0');
+
 				txt.set_word(i, new_w);
 				is_doubles = true;
 				break;
@@ -45,8 +50,8 @@ void process(Text& txt) {
 
 
 int main() {
-	std::fstream in("input.txt"),
-		out("output.txt", std::fstream::trunc | std::fstream::out);
+	std::fstream in(INPUT_PATH),
+		out(OUTPUT_PATH, std::fstream::trunc | std::fstream::out);
 	if (in.is_open() && out.is_open()) {
 		Text txt;
 		in >> txt;
@@ -56,6 +61,5 @@ int main() {
 	else {
 		std::cout << "files not open";
 	}
-
 	in.close(); out.close();
 }
