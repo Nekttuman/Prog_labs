@@ -1,0 +1,15 @@
+﻿  StrL.cpp
+D:\repos\Prog_labs\2_sem\lab_3\lab_3\StrL.cpp(5,20): warning C4018: '<': signed/unsigned mismatch
+D:\repos\Prog_labs\2_sem\lab_3\lab_3\StrL.cpp(46,20): warning C4018: '<': signed/unsigned mismatch
+D:\repos\Prog_labs\2_sem\lab_3\lab_3\StrL.cpp(56,20): warning C4018: '<': signed/unsigned mismatch
+  Text.cpp
+D:\repos\Prog_labs\2_sem\lab_3\lab_3\Text.cpp(4,20): warning C4018: '<': signed/unsigned mismatch
+D:\repos\Prog_labs\2_sem\lab_3\lab_3\Text.cpp(6,20): warning C4018: '<': signed/unsigned mismatch
+D:\repos\Prog_labs\2_sem\lab_3\lab_3\Text.cpp(29,20): warning C4018: '<': signed/unsigned mismatch
+  main.cpp
+D:\repos\Prog_labs\2_sem\lab_3\lab_3\main.cpp(14,20): warning C4018: '<': signed/unsigned mismatch
+D:\repos\Prog_labs\2_sem\lab_3\lab_3\main.cpp(16,21): warning C4018: '<': signed/unsigned mismatch
+  Generating Code...
+D:\repos\Prog_labs\2_sem\lab_3\lab_3\StrL.h(20): warning C4715: 'StrL::get_char': not all control paths return a value
+D:\repos\Prog_labs\2_sem\lab_3\lab_3\StrL.h(20): warning C4715: 'StrL::get_char': not all control paths return a value
+  lab_3.vcxproj -> D:\repos\Prog_labs\2_sem\lab_3\x64\Debug\lab_3.exe

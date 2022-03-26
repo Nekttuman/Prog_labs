@@ -136,7 +136,7 @@ bool is_collinear(const coord& a, const coord& b, const coord& c) {
 }
 
 void draw_all_points() {
-  system("python ../../visualisation/draw_points.py");
+  system("python D:/repos/Prog_labs/1_sem/kursach/visualisation/draw_points.py");
 }
 
 void draw_figure(const fig& cur_figure) {
@@ -145,7 +145,7 @@ void draw_figure(const fig& cur_figure) {
     std::to_string(cur_figure.third.x) + ' ' + std::to_string(cur_figure.third.y) + ' ' +
     std::to_string(cur_figure.four.x) + ' ' + std::to_string(cur_figure.four.y) + ' ' +
     std::to_string(cur_figure.five.x) + ' ' + std::to_string(cur_figure.five.y);
-  std::string command = "python ../../visualisation/draw_fig_with_points.py " + args;
+  std::string command = "python D:/repos/Prog_labs/1_sem/kursach/visualisation/draw_fig_with_points.py " + args;
   system(command.c_str());
 }
 
@@ -315,14 +315,14 @@ void out_result(const fig& figure, std::fstream &out, coord*points, int n) {
 
 int main()
 {
-  std::fstream in("../../input.txt");
-  std::fstream out("../../output.txt", std::fstream::out | std::fstream::trunc);
-  std::fstream log("../../log.txt", std::fstream::out | std::fstream::trunc);
+  std::fstream in("D:/repos/Prog_labs/1_sem/kursach/input.txt");
+  std::fstream out("D:/repos/Prog_labs/1_sem/kursach/output.txt", std::fstream::out | std::fstream::trunc);
+  std::fstream log("D:/repos/Prog_labs/1_sem/kursach/log.txt", std::fstream::out | std::fstream::trunc);
 
   int n = get_n(in,log);
   log << "number of matching strings = " << n << '\n';
 
-  bool VISUALIZATE = true;
+  bool VISUALIZATE = false;
 
   coord* points = new coord[n];
   read_points(in, points, n, log);
@@ -347,7 +347,8 @@ int main()
         out << points[i].x << " : " << points[i].y << "\n";
       }
     }
-    draw_figure(best_figure);
+    if (VISUALIZATE)
+      draw_figure(best_figure);
   }
   else {
     log << "figure not found" <<'\n';
