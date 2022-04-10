@@ -4,16 +4,17 @@
 const unsigned N = 255;
 
 
-struct StrM {
+class StrM {
   char c[N] = "_";
   char Marker = '_';
 
+public:
   StrM(char* c, char m);
   StrM() {}
   friend std::fstream& operator<< (std::fstream& out, const StrM& s);
 
-  void setM(char m) { Marker = m; }
-  void setData(char* d);
+	  void setM(char m) { Marker = m; }
+	  void setData(char* d);
 
   bool operator==(const StrM& r_s);
 };
