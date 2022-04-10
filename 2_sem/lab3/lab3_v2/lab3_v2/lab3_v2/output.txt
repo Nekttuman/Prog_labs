@@ -1,0 +1,27 @@
+Linked list data:
+
+Et benedictus^
+Ave Maria_
+Gratia plena_
+Maria, gratia plena_
+Maria, gratia plena_
+Ave, ave dominus_
+Dominus tecum_
+Bendicta tu in mulieribus_
+Et benedictus_
+Et benedictus fructus ventris_
+Ventris tui, Iesus_
+Ave Maria_
+Ave Maria*
+Maiden mild_
+I listen to a maidens prayer_
+For thou canst hear amid the wild_
+'Tis thou, 'tis thou canst save me amid despair_
+We slumber safely 'til the morrow_
+Though e'en by men outcast reviled_
+Oh, maiden_
+See a maiden sorrow_
+Oh, mother hear a suppliant child_
+Ave Maria*
+
+<<Ave Maria*>> was found in 13 position.
