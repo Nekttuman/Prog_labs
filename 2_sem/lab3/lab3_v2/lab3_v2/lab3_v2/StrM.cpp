@@ -6,7 +6,7 @@
 StrM::StrM(char* c, char m) {
   this->Marker = m;
   int i = 0;
-  for (; i < N, c[i] != m; i++) {
+  for (; i < N && c[i] != m; i++) {
     this->c[i] = c[i];
   }
   this->c[i] = m;

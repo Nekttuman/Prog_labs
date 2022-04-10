@@ -13,6 +13,7 @@ void process_data(std::fstream& in, std::fstream& out) {
   }
   out << "Linked list data:\n\n";
   l.print(out);
+
   int res = l.find(trgt);
   out << "\n<<";
   if (res != -1)
@@ -22,7 +23,6 @@ void process_data(std::fstream& in, std::fstream& out) {
 }
 
 
-void test_dll(std::fstream out);
 int main()
 {
   std::fstream in("input.txt"),
@@ -35,20 +35,4 @@ int main()
   }
 
   in.close(); out.close(); 
-
-  //test_dll();
-
-}
-
-void test_dll(std::fstream out) {
-  int a[] = { 1,2,3,4 };
-  LinkedList <int> l(a, 4);
-  l.print(out);
-
-  l.push_back(3);
-  l.print(out);
-
-  int trgt = 3;
-
-  std::cout << l.find(trgt);
 }
