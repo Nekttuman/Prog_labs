@@ -1,5 +1,0 @@
-'sssdddsssa' does not contain 'a' 2 times. 
-string isn't correct
-'a' does not contain 'a' 2 times. 
-string isn't correct
-'sssaa' contains 'a' 2 times. 
