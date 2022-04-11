@@ -16,7 +16,7 @@ LinkedList<T>::LinkedList(const T* arr, int len) {
 }
 
 template <class T>
-void LinkedList<T>::push_back(T data) {
+void LinkedList<T>::push_back(const T& data) {
     Node* last = head;
     if (last == nullptr) {
         head = new Node{ data, nullptr };
