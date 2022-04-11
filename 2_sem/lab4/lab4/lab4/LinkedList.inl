@@ -62,6 +62,16 @@ LinkedList<T>::~LinkedList() {
     }
 }
 
+template <class T>
+void LinkedList<T>::print() {
+  Node* n = head;
+  std::cout << "[";
+  while (n != nullptr) {
+    std::cout << n->data << " ";
+    n = n->next;
+  }
+  std::cout << "]\n";
+}
 
 
 
