@@ -28,9 +28,19 @@
 
 void process(LinkedList<LinkedList<char*>> nl1, LinkedList<LinkedList<char*>> nl2, LinkedList<LinkedList<char*>> nl3, std::fstream& out) {
   int l_len = nl1.getLen();
-  std::cout << nl1.isContainedInSymmDiff(nl2,nl3);
-
   
+  out << "First list\n";
+  nl1.stypidPrint(out);
+  
+  out << "\nSecond list\n";
+  nl2.stypidPrint(out);
+
+  out << "\nThird list\n";
+  nl3.stypidPrint(out);
+
+  out << "\n\n" << (nl1.isContainedInSymmDiff(nl2, nl3) ? "l1 сontained in simmetry difference of l2 and l3" :
+                                            "l1 not contained in simmetry difference of l2 and l3");
+
 }
 
 //
@@ -52,7 +62,6 @@ int main()
     LinkedList<LinkedList<char*>> nl1, nl2, nl3;
     nl1.getNestedListFromFile(in1); nl2.getNestedListFromFile(in2); nl3.getNestedListFromFile(in3);
     process(nl1,nl2,nl3, out);
-    nl1.stypidPrint(out);
   }
   else {
     std::cout << "files not open";

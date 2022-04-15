@@ -1,0 +1,31 @@
+First list
+{ But t here' s a c ertai n kin d of  comfo rt th at I  get f rom b uying  on    }
+{ DVDs  on sa le, u nders hirts , thi ngs t hat I  just  don' t nee d      }
+{ Love  is fr ozen  in ti me     }
+{ There  are  exper ience s you  can' t rep lace   }
+{ fire  thing s      }
+
+Second list
+{ But t here' s a c ertai n kin d of  comfo rt th at I  get f rom b uying  on    }
+{ DVDs  on sa le, u nders hirts , thi ngs t hat I  just  don' t nee d      }
+{ Head  down  to ta rget   }
+{ I don 't wa nna g o bac k hom e      }
+{ It's  there  when  I ne ed it  the  most   }
+{ Love  is fr ozen  in ti me     }
+{ My he art i s bea ting  out o f my  chest  }
+{ My ja cket  still  smel ls li ke sm oke    }
+{ There  are  exper ience s you  can' t rep lacee  }
+
+Third list
+{ Head  down  to ta rget   }
+{ I don 't wa nna g o bac k hom e      }
+{ I lef t the  hous e the  tank  on e mpty   }
+{ I was  here  late  last  nigh t      }
+{ If my  phon e is  off i t's p robab ly wh ere I  can' t be  found  }
+{ It's  nice  just  to kn ow yo u're  aroun d      }
+{ It's  there  when  I ne ed it  the  most   }
+{ My he art i s bea ting  out o f my  chest  }
+{ My ja cket  still  smel ls li ke sm oke    }
+
+
+l1 not contained in simmetry difference of l2 and l3

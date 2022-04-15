@@ -34,16 +34,30 @@ public:
     bool isContainedInSymmDiff(LinkedList<T> l1, LinkedList<T> l2) {
         Node* n1 = head, * n2 = l1.head, * n3 = l2.head;
         for (; n1 != nullptr; n1 = n1->next) {
-            while (n2->data < n1->data && n2 != nullptr)
+            while (n2 != nullptr && n2->data < n1->data)
                 n2 = n2->next;
-            while (n3->data < n1->data && n3 != nullptr)
+            while (n3 != nullptr && n3->data < n1->data)
                 n3 = n3->next;
 
+            if (n2 == nullptr) {
+                if (n3 == nullptr)
+                    return false;
+                else if (n1->data != n3->data)
+                    return false;
+                else
+                    continue;
+            }
+            else if (n3 == nullptr) {
+                if (n2 == nullptr)
+                    return false;
+                else if (n1->data != n2->data)
+                    return false;
+                else
+                    continue;
+            }
+
             if ((n1->data == n2->data && n1->data == n3->data) ||
-                (n1->data != n2->data && n1->data != n3->data) ||
-                (n2 == nullptr && n3 == nullptr) || 
-                (n2 == nullptr && n1->data != n3->data) ||
-                (n3 == nullptr && n1->data != n2->data))
+                (n1->data != n2->data && n1->data != n3->data))
                 return false;
         }
         return true;
