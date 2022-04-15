@@ -16,6 +16,15 @@ LinkedList<T>::LinkedList(const T* arr, int len) {
 }
 
 template <class T>
+LinkedList<T>::LinkedList(const LinkedList& l) {
+  Node* n = l.head;
+  while (n != nullptr) {
+    this->push_back(n->data);
+    n = n->next;
+  }
+}
+
+template <class T>
 void LinkedList<T>::push_back(const T& data) {
     Node* last = head;
     if (last == nullptr) {
@@ -29,25 +38,77 @@ void LinkedList<T>::push_back(const T& data) {
 }
 
 template <class T>
-void LinkedList<T>::print(std::fstream& out) {
-    if (head == nullptr) return;
-    Node* It = head;
-    for (; It->next != nullptr; It = It->next)
-        out << It->data << '\n';
-    out << It->data << '\n';
+int LinkedList<T>::getLen() {
+  Node* n = head;
+  int res = 0;
+  while (n != nullptr) {
+    res++;
+    n = n->next;
+  }
+  return res;
+}
+
+template <class T>
+LinkedList<T> LinkedList<T>::getSymmetryDiff(LinkedList<T> l) {
+  LinkedList<T> result;
+
+  for (Node* n = head; n != nullptr; n = n->next) {
+    if (l.find(n->data) == -1) {
+      result.push_back(n->data);
+    }
+  }
+  for (Node* n = l.head; n != nullptr; n = n->next) {
+    if (find(n->data) == -1) {
+      result.push_back(n->data);
+    }
+  }
+  return result;
+}
+
+template<class T>
+bool LinkedList<T>::isContainedIn(LinkedList<T> l) {
+  Node* n = head;
+  while (n != nullptr) {
+    if (l.find(n->data) == -1)
+      return false;
+    n = n->next;
+  }
+
+  return true;
+}
+
+template <class T>
+void LinkedList<T>::empty() {
+  Node* next = head;
+  while (head != nullptr) {
+    next = head->next;
+    delete head;
+    head = next;
+  }
+}
+
+template <class T>
+void LinkedList<T>::getNestedListFromFile(std::fstream& in) {
+  LinkedList<char> tmp;
+  while (!in.eof()) {
+    in >> tmp;
+    this->push_back(tmp);
+  }
 }
 
 
 template <class T>
 int LinkedList<T>::find(T trgt) {
-    Node* It = head;
-    int i = 1;
-    for (; It->next != nullptr; It = It->next, i++)
-        if (It->data == trgt)
-            return i;
-    if (It->data == trgt)
-        return i;
+  if (head == nullptr)
     return -1;
+  Node* It = head;
+  int i = 1;
+  for (; It->next != nullptr; It = It->next, i++)
+    if (It->data == trgt)
+      return i;
+  if (It->data == trgt)
+    return i;
+  return -1;
 }
 
 
@@ -61,19 +122,6 @@ LinkedList<T>::~LinkedList() {
         head = next;
     }
 }
-
-template <class T>
-void LinkedList<T>::print() {
-  Node* n = head;
-  std::cout << "[";
-  while (n != nullptr) {
-    std::cout << n->data << " ";
-    n = n->next;
-  }
-  std::cout << "]\n";
-}
-
-
 
 
 #endif // !LINKEDLIST

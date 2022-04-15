@@ -141,9 +141,11 @@
   <ItemGroup>
     <ClCompile Include="lab4.cpp" />
     <ClCompile Include="LinkedList.inl" />
+    <ClCompile Include="NestedList.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="LinkedList.h" />
+    <ClInclude Include="NestedList.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

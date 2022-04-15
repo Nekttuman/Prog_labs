@@ -18,29 +18,23 @@ class LinkedList {
 public:
     LinkedList(const T* arr, int len);
     LinkedList() {}
-    LinkedList(const LinkedList& l) {
-        Node* n = l.head;
-        while (n != nullptr) {
-            this->push_back(n->data);
-            n = n->next;
-        }
-    }
+    LinkedList(const LinkedList& l);
 
   
     void push_back(const T& data);
 
-    void print(std::fstream& out);
-    void print();
-
     int find(T trgt);
-    //bool isInSymmDiff(const LinkedList<char>& l1, const LinkedList<char>& l2);
+    int getLen();
+    LinkedList<T> getSymmetryDiff(LinkedList<T> l);
+    bool isContainedIn(LinkedList<T> l);
+    void empty();
 
-    void sort() {
-    
-    }
-    bool isIn(T trgt) {
-
-        return false;
+    T& operator[](int index) {
+      Node* n = head;
+      for (int i = 0; i < index; i++) {
+        n = n->next;
+      }
+      return n->data;
     }
 
     LinkedList<T>& operator=(const LinkedList<T>& l) {
@@ -58,9 +52,7 @@ public:
       return *this;
     }
 
-
-    //friend std::fstream& operator <<(std::fstream& out, LinkedList<T>& nl);
-    friend std::ostream& operator <<(std::ostream& out, LinkedList<T>& nl) {
+    friend std::ostream& operator <<(std::ostream& out, const LinkedList<T>& nl) {
         if (nl.head == nullptr) return out;
         auto n = nl.head;
         out << "[";
@@ -70,12 +62,37 @@ public:
         return out;
     }
 
-    
+    void getNestedListFromFile(std::fstream& in);
+
+    friend std::fstream& operator <<(std::fstream& out, const LinkedList<T>& nl) {
+      if (nl.head == nullptr) return out;
+      auto n = nl.head;
+      out << "[";
+      for (; n->next != nullptr; n = n->next)
+        out << n->data << " ";
+      out << n->data << "]";
+      return out;
+    }
+
+    bool operator ==(LinkedList<T> rl) {
+      if (this->getLen() != rl.getLen())
+        return false;
+      Node* rn = rl.head;
+      Node* ln = head;
+      while (rn != nullptr) {
+        if (!(ln->data == rn->data))
+          return false;
+        rn = rn->next;
+        ln = ln->next;
+      }
+      return true;
+    }    
+
     friend std::istream& operator >>(std::istream& in, LinkedList<T>& l) {
         
         if (l.head != nullptr)
-            l.~LinkedList();
-        char tmp;
+            l.empty();
+        T tmp;
         in >> std::noskipws>>tmp;
         while (tmp != '\n') {
             l.push_back(tmp);
@@ -84,26 +101,24 @@ public:
         return in;
     }
 
+    friend std::fstream& operator >>(std::fstream& in, LinkedList<T>& l) {
+
+      if (l.head != nullptr)
+        l.empty();
+      T tmp;
+      in >> std::noskipws >> tmp;
+      while (tmp != '\n' && !in.eof()) {
+        l.push_back(tmp);
+        in >> tmp;
+      }
+      return in;
+    }
+
     ~LinkedList();
 };
 
-//template <class T>
-//std::fstream& operator <<(std::fstream& out, LinkedList<T>& nl) {
-//    if (nl.head == nullptr) return out;
-//    auto n = nl.head;
-//    for (; n->next != nullptr; n = n->next)
-//        out << n->data << '\n';
-//    out << n->data << '\n';
-//}
 
-//template <class T>
-//std::ostream& operator <<(std::ostream& out, LinkedList<T>& nl) {
-//    if (nl.head == nullptr) return out;
-//    auto n = nl.head;
-//    for (; n->next != nullptr; n = n->next)
-//        out << n->data << '\n';
-//    out << n->data << '\n';
-//}
+
 
 #include "LinkedList.inl"
 

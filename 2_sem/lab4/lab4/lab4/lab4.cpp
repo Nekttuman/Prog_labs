@@ -22,31 +22,81 @@
 //      out << nl2[i] << " ^ ";
 //      out << nl3[i] << "\n";
 //  }
-//
 //}
+
+
+void process(LinkedList<LinkedList<char>> nl1, LinkedList<LinkedList<char>> nl2, LinkedList<LinkedList<char>> nl3, std::fstream& out) {
+  int l_len = nl1.getLen();
+  if (l_len != nl2.getLen() || l_len != nl3.getLen()) {
+    std::cout << "Error: nested list are not equal by length\n";
+    return;
+  }
+
+  for (int i = 0; i < l_len; i++) {
+    out << nl1[i];
+    out << ((nl1[i].isContainedIn(nl2[i].getSymmetryDiff(nl3[i]))) ? " is contained in symmetry difference of " : " is not contained in symmetry difference of ");
+    out << nl2[i] <<" and ";
+    out << nl3[i]<<'\n';
+  }
+
+  out << "\n\nNested List 1:\n" << nl1<<"\n";
+  out << "Nested List 2:\n" << nl2 << "\n";
+  out << "Nested List 3:\n" << nl3 << "\n";
+
+}
+
+
+
+void test();
+
 
 int main()
 {
-  /*std::fstream in1("input_l1.txt"), in2("input_l2.txt"), in3("input_l3.txt"),
+  std::fstream in1("input_l1.txt"), in2("input_l2.txt"), in3("input_l3.txt"),
     out("output.txt", std::fstream::trunc | std::fstream::out);
   if (in1.is_open() && out.is_open() && in2.is_open() && in3.is_open()) {
-    process(in1, in2, in3, out);
+    LinkedList<LinkedList<char>> nl1, nl2, nl3;
+    nl1.getNestedListFromFile(in1); nl2.getNestedListFromFile(in2); nl3.getNestedListFromFile(in3);
+    process(nl1,nl2,nl3, out);
   }
   else {
     std::cout << "files not open";
   }
 
-  in1.close(); in2.close(); in3.close(); out.close();*/
-    LinkedList<char> l;
-    l.push_back('a');
-    LinkedList<char> l2;
-    l2.push_back('aa');
-    l2.push_back('b');
-    std::cin >> l2;
+  in1.close(); in2.close(); in3.close(); out.close();
+  //test();
+}
 
-    LinkedList<LinkedList<char>> nl;
 
-    nl.push_back(l);
-    nl.push_back(l2);
-    std::cout << nl;
+
+
+
+
+
+
+
+
+
+
+
+void test() {
+  LinkedList<LinkedList<LinkedList<char>>> l3;
+
+  LinkedList<LinkedList<char>> l2;
+
+  LinkedList<char> l1;
+  l1.push_back('1');
+
+  l2.push_back(l1);
+
+  l3.push_back(l2);
+
+  l3[0][0].push_back('2');
+  l3[0][0].push_back('3');
+  l3[0][0].push_back('4');
+
+  l2[0].push_back('11');
+  l3.push_back(l2);
+
+  std::cout << l3;
 }
