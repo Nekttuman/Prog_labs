@@ -1,8 +1,4 @@
 ﻿  lab4.cpp
-D:\repos\Prog_labs\2_sem\lab4\lab4\lab4\lab4.cpp(98,23): warning C4305: 'argument': truncation from 'int' to 'const T'
-          with
-          [
-              T=char
-          ]
-D:\repos\Prog_labs\2_sem\lab4\lab4\lab4\lab4.cpp(98,19): warning C4309: 'argument': truncation of constant value
-  lab4.vcxproj -> D:\repos\Prog_labs\2_sem\lab4\lab4\x64\Debug\lab4.exe
+  LinkedList.inl
+  Generating Code...
+  lab4.vcxproj -> G:\projects\Prog_labs\2_sem\lab4\lab4\x64\Debug\lab4.exe

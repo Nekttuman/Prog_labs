@@ -25,7 +25,7 @@ LinkedList<T>::LinkedList(const LinkedList& l) {
 }
 
 template <class T>
-void LinkedList<T>::push_back(const T& data) {
+void LinkedList<T>::push_back(T data) {
     Node* last = head;
     if (last == nullptr) {
         head = new Node{ data, nullptr };
@@ -87,14 +87,14 @@ void LinkedList<T>::empty() {
   }
 }
 
-template <class T>
-void LinkedList<T>::getNestedListFromFile(std::fstream& in) {
-  LinkedList<char> tmp;
-  while (!in.eof()) {
-    in >> tmp;
-    this->push_back(tmp);
-  }
-}
+//template <class T>
+//void LinkedList<T>::getNestedListFromFile(std::fstream& in) {
+//  LinkedList<char> tmp;
+//  while (!in.eof()) {
+//    in >> tmp;
+//    this->push_back(tmp);
+//  }
+//}
 
 
 template <class T>
